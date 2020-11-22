@@ -32,9 +32,6 @@ const router = new Router()
 router.use('/users', user)
 router.use('/auth', auth)
 router.use('/transaksis', transaksi)
-router.use('/docs',function( req, res ) {
-    res.redirect('docs/index.html' );
-  })
 
 
 export default router
