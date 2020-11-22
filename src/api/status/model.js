@@ -1,18 +1,10 @@
 import mongoose, { Schema } from 'mongoose'
 
-const transaksiSchema = new Schema({
-  idDivisi: {
-    type: Schema.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  jenis: {
+const statusSchema = new Schema({
+  idTransaksi: {
     type: String
   },
-  biaya: {
-    type: String
-  },
-  keterangan: {
+  status: {
     type: String
   }
 }, {
@@ -23,15 +15,13 @@ const transaksiSchema = new Schema({
   }
 })
 
-transaksiSchema.methods = {
+statusSchema.methods = {
   view (full) {
     const view = {
       // simple view
       id: this.id,
-      idDivisi: this.idDivisi.view(full),
-      jenis: this.jenis,
-      biaya: this.biaya,
-      keterangan: this.keterangan,
+      idTransaksi: this.idTransaksi,
+      status: this.status,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
@@ -43,7 +33,7 @@ transaksiSchema.methods = {
   }
 }
 
-const model = mongoose.model('Transaksi', transaksiSchema)
+const model = mongoose.model('Status', statusSchema)
 
 export const schema = model.schema
 export default model

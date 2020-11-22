@@ -75,6 +75,403 @@
     "groupTitle": "Auth"
   },
   {
+    "type": "post",
+    "url": "/status",
+    "title": "Create status",
+    "name": "CreateStatus",
+    "group": "Status",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>admin access token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "idTransaksi",
+            "description": "<p>Status's idTransaksi.</p>"
+          },
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Status's status.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Status's data.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Status not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/status/index.js",
+    "groupTitle": "Status"
+  },
+  {
+    "type": "delete",
+    "url": "/status/:id",
+    "title": "Delete status",
+    "name": "DeleteStatus",
+    "group": "Status",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>admin access token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 204": [
+          {
+            "group": "Success 204",
+            "optional": false,
+            "field": "204",
+            "description": "<p>No Content.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Status not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/status/index.js",
+    "groupTitle": "Status"
+  },
+  {
+    "type": "get",
+    "url": "/status/:id",
+    "title": "Retrieve status",
+    "name": "RetrieveStatus",
+    "group": "Status",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>user access token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Status's data.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Status not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>user access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/status/index.js",
+    "groupTitle": "Status"
+  },
+  {
+    "type": "get",
+    "url": "/status",
+    "title": "Retrieve statuses",
+    "name": "RetrieveStatuses",
+    "group": "Status",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>admin access token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "q",
+            "description": "<p>Query to search.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1..30",
+            "optional": true,
+            "field": "page",
+            "defaultValue": "1",
+            "description": "<p>Page number.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1..100",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "30",
+            "description": "<p>Amount of returned items.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": true,
+            "field": "sort",
+            "defaultValue": "-createdAt",
+            "description": "<p>Order of returned items.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": true,
+            "field": "fields",
+            "description": "<p>Fields to be returned.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Total amount of statuses.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "rows",
+            "description": "<p>List of statuses.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/status/index.js",
+    "groupTitle": "Status"
+  },
+  {
+    "type": "put",
+    "url": "/status/:id",
+    "title": "Update status",
+    "name": "UpdateStatus",
+    "group": "Status",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>admin access token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "idTransaksi",
+            "description": "<p>Status's idTransaksi.</p>"
+          },
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Status's status.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Status's data.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Status not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/status/index.js",
+    "groupTitle": "Status"
+  },
+  {
     "type": "put",
     "url": "/transaksis/:id",
     "title": "Approve Transaksi",
@@ -108,12 +505,6 @@
             "optional": false,
             "field": "biaya",
             "description": "<p>Transaksi's biaya.</p>"
-          },
-          {
-            "group": "Parameter",
-            "optional": false,
-            "field": "status",
-            "description": "<p>Transaksi's status.</p>"
           },
           {
             "group": "Parameter",
@@ -260,12 +651,6 @@
             "optional": false,
             "field": "biaya",
             "description": "<p>Transaksi's biaya.</p>"
-          },
-          {
-            "group": "Parameter",
-            "optional": false,
-            "field": "status",
-            "description": "<p>Transaksi's status.</p>"
           },
           {
             "group": "Parameter",
@@ -551,8 +936,7 @@
             "group": "Parameter",
             "type": "String",
             "allowedValues": [
-              "user",
-              "admin"
+              "user"
             ],
             "optional": true,
             "field": "role",

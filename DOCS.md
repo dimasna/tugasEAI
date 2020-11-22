@@ -5,6 +5,13 @@
 - [Auth](#auth)
 	- [Authenticate](#authenticate)
 	
+- [Status](#status)
+	- [Create status](#create-status)
+	- [Delete status](#delete-status)
+	- [Retrieve status](#retrieve-status)
+	- [Retrieve statuses](#retrieve-statuses)
+	- [Update status](#update-status)
+	
 - [Transaksi](#transaksi)
 	- [Approve Transaksi](#approve-transaksi)
 	- [Delete transaksi](#delete-transaksi)
@@ -43,6 +50,82 @@
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Master access_token.</p>							|
 
+# Status
+
+## Create status
+
+
+
+	POST /status
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| idTransaksi			| 			|  <p>Status's idTransaksi.</p>							|
+| status			| 			|  <p>Status's status.</p>							|
+
+## Delete status
+
+
+
+	DELETE /status/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Retrieve status
+
+
+
+	GET /status/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve statuses
+
+
+
+	GET /status
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update status
+
+
+
+	PUT /status/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| idTransaksi			| 			|  <p>Status's idTransaksi.</p>							|
+| status			| 			|  <p>Status's status.</p>							|
+
 # Transaksi
 
 ## Approve Transaksi
@@ -59,7 +142,6 @@
 | access_token			| String			|  <p>admin access token.</p>							|
 | jenis			| 			|  <p>Transaksi's jenis.</p>							|
 | biaya			| 			|  <p>Transaksi's biaya.</p>							|
-| status			| 			|  <p>Transaksi's status.</p>							|
 | keterangan			| 			|  <p>Transaksi's keterangan.</p>							|
 
 ## Delete transaksi
@@ -89,7 +171,6 @@
 | access_token			| String			|  <p>user access token.</p>							|
 | jenis			| 			|  <p>Transaksi's jenis.</p>							|
 | biaya			| 			|  <p>Transaksi's biaya.</p>							|
-| status			| 			|  <p>Transaksi's status.</p>							|
 | keterangan			| 			|  <p>Transaksi's keterangan.</p>							|
 
 ## Lihat Semua Transaksi

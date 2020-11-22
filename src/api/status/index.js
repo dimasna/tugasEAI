@@ -4,39 +4,38 @@ import { middleware as body } from 'bodymen'
 import { token } from '../../services/passport'
 import { create, index, show, update, destroy } from './controller'
 import { schema } from './model'
-export Transaksi, { schema } from './model'
+export Status, { schema } from './model'
 
 const router = new Router()
-const { jenis, biaya, keterangan } = schema.tree
+const { idTransaksi, status } = schema.tree
 
 /**
- * @api {post} /transaksis Laporkan Transaksi
- * @apiName LaporkanTransaksi
- * @apiGroup Transaksi
- * @apiPermission user
- * @apiParam {String} access_token user access token.
- * @apiParam jenis Transaksi's jenis.
- * @apiParam biaya Transaksi's biaya.
- * @apiParam keterangan Transaksi's keterangan.
- * @apiSuccess {Object} transaksi Transaksi's data.
+ * @api {post} /status Create status
+ * @apiName CreateStatus
+ * @apiGroup Status
+ * @apiPermission admin
+ * @apiParam {String} access_token admin access token.
+ * @apiParam idTransaksi Status's idTransaksi.
+ * @apiParam status Status's status.
+ * @apiSuccess {Object} status Status's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 404 Transaksi not found.
- * @apiError 401 user access only.
+ * @apiError 404 Status not found.
+ * @apiError 401 admin access only.
  */
 router.post('/',
-  token({ required: true }),
-  body({ jenis, biaya, keterangan }),
+  token({ required: true, roles: ['admin'] }),
+  body({ idTransaksi, status }),
   create)
 
 /**
- * @api {get} /transaksis Lihat Semua Transaksi
- * @apiName LihatSemuaTransaksi
- * @apiGroup Transaksi
+ * @api {get} /status Retrieve statuses
+ * @apiName RetrieveStatuses
+ * @apiGroup Status
  * @apiPermission admin
  * @apiParam {String} access_token admin access token.
  * @apiUse listParams
- * @apiSuccess {Number} count Total amount of transaksis.
- * @apiSuccess {Object[]} rows List of transaksis.
+ * @apiSuccess {Number} count Total amount of statuses.
+ * @apiSuccess {Object[]} rows List of statuses.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 401 admin access only.
  */
@@ -46,14 +45,14 @@ router.get('/',
   index)
 
 /**
- * @api {get} /transaksis/:id Lihat Transaksi By Id
- * @apiName LihatTransaksiById
- * @apiGroup Transaksi
+ * @api {get} /status/:id Retrieve status
+ * @apiName RetrieveStatus
+ * @apiGroup Status
  * @apiPermission user
  * @apiParam {String} access_token user access token.
- * @apiSuccess {Object} transaksi Transaksi's data.
+ * @apiSuccess {Object} status Status's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 404 Transaksi not found.
+ * @apiError 404 Status not found.
  * @apiError 401 user access only.
  */
 router.get('/:id',
@@ -61,32 +60,31 @@ router.get('/:id',
   show)
 
 /**
- * @api {put} /transaksis/:id Approve Transaksi
- * @apiName ApproveTransaksi
- * @apiGroup Transaksi
+ * @api {put} /status/:id Update status
+ * @apiName UpdateStatus
+ * @apiGroup Status
  * @apiPermission admin
  * @apiParam {String} access_token admin access token.
- * @apiParam jenis Transaksi's jenis.
- * @apiParam biaya Transaksi's biaya.
- * @apiParam keterangan Transaksi's keterangan.
- * @apiSuccess {Object} transaksi Transaksi's data.
+ * @apiParam idTransaksi Status's idTransaksi.
+ * @apiParam status Status's status.
+ * @apiSuccess {Object} status Status's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 404 Transaksi not found.
+ * @apiError 404 Status not found.
  * @apiError 401 admin access only.
  */
 router.put('/:id',
   token({ required: true, roles: ['admin'] }),
-  body({ jenis, biaya, keterangan }),
+  body({ idTransaksi, status }),
   update)
 
 /**
- * @api {delete} /transaksis/:id Delete transaksi
- * @apiName DeleteTransaksi
- * @apiGroup Transaksi
+ * @api {delete} /status/:id Delete status
+ * @apiName DeleteStatus
+ * @apiGroup Status
  * @apiPermission admin
  * @apiParam {String} access_token admin access token.
  * @apiSuccess (Success 204) 204 No Content.
- * @apiError 404 Transaksi not found.
+ * @apiError 404 Status not found.
  * @apiError 401 admin access only.
  */
 router.delete('/:id',
