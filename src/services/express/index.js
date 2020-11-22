@@ -16,7 +16,10 @@ export default (apiRoot, routes) => {
     app.use(compression())
     app.use(morgan('dev'))
   }
-  app.use('/docs',express.static('docs'));
+  app.use('/static',express.static('docs'));
+  app.get('/docs', function (req, res) {
+    res.redirect(301,'/static/index.html')
+  })
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
   app.use(apiRoot, routes)
