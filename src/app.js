@@ -22,7 +22,7 @@ if (mongo.uri) {
 mongoose.Promise = Promise
 
 setImmediate(() => {
-  server.listen(port, ip, () => {
+  app.listen(port, () => {
     console.log('Express server listening on http://%s:%d, in %s mode', ip, port, env)
   })
 })
