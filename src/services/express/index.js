@@ -6,7 +6,7 @@ import bodyParser from 'body-parser'
 import { errorHandler as queryErrorHandler } from 'querymen'
 import { errorHandler as bodyErrorHandler } from 'bodymen'
 import { env } from '../../config'
-
+import path from 'path'
 export default (apiRoot, routes) => {
   const app = express()
 
@@ -16,7 +16,7 @@ export default (apiRoot, routes) => {
     app.use(compression())
     app.use(morgan('dev'))
   }
-
+  app.use('/docs',express.static('docs'));
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
   app.use(apiRoot, routes)
