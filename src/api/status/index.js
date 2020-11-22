@@ -10,9 +10,9 @@ const router = new Router()
 const { idTransaksi, status } = schema.tree
 
 /**
- * @api {post} /status Create status
- * @apiName CreateStatus
- * @apiGroup Status
+ * @api {post} /status Membuat Status
+ * @apiName MembuatStatus
+ * @apiGroup Status Transaksi
  * @apiPermission admin
  * @apiParam {String} access_token admin access token.
  * @apiParam idTransaksi Status's idTransaksi.
@@ -28,9 +28,9 @@ router.post('/',
   create)
 
 /**
- * @api {get} /status Retrieve statuses
- * @apiName RetrieveStatuses
- * @apiGroup Status
+ * @api {get} /status Lihat Semua Status
+ * @apiName LihatSemuaStatusTransaksi
+ * @apiGroup Status Transaksi
  * @apiPermission admin
  * @apiParam {String} access_token admin access token.
  * @apiUse listParams
@@ -45,9 +45,9 @@ router.get('/',
   index)
 
 /**
- * @api {get} /status/:id Retrieve status
- * @apiName RetrieveStatus
- * @apiGroup Status
+ * @api {get} /status/:id Lihat Status By Id
+ * @apiName LihatStatusById
+ * @apiGroup Status Transaksi
  * @apiPermission user
  * @apiParam {String} access_token user access token.
  * @apiSuccess {Object} status Status's data.
@@ -60,9 +60,9 @@ router.get('/:id',
   show)
 
 /**
- * @api {put} /status/:id Update status
- * @apiName UpdateStatus
- * @apiGroup Status
+ * @api {put} /status/:id Perbarui Status
+ * @apiName PerbaruiStatus
+ * @apiGroup Status Transaksi
  * @apiPermission admin
  * @apiParam {String} access_token admin access token.
  * @apiParam idTransaksi Status's idTransaksi.
@@ -80,7 +80,7 @@ router.put('/:id',
 /**
  * @api {delete} /status/:id Delete status
  * @apiName DeleteStatus
- * @apiGroup Status
+ * @apiGroup Status Transaksi
  * @apiPermission admin
  * @apiParam {String} access_token admin access token.
  * @apiSuccess (Success 204) 204 No Content.

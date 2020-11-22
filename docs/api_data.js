@@ -75,91 +75,11 @@ define({ "api": [
     "groupTitle": "Auth"
   },
   {
-    "type": "post",
-    "url": "/status",
-    "title": "Create status",
-    "name": "CreateStatus",
-    "group": "Status",
-    "permission": [
-      {
-        "name": "admin",
-        "title": "Admin access only",
-        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
-      }
-    ],
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "access_token",
-            "description": "<p>admin access token.</p>"
-          },
-          {
-            "group": "Parameter",
-            "optional": false,
-            "field": "idTransaksi",
-            "description": "<p>Status's idTransaksi.</p>"
-          },
-          {
-            "group": "Parameter",
-            "optional": false,
-            "field": "status",
-            "description": "<p>Status's status.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "status",
-            "description": "<p>Status's data.</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "type": "Object",
-            "optional": false,
-            "field": "400",
-            "description": "<p>Some parameters may contain invalid values.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "404",
-            "description": "<p>Status not found.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "401",
-            "description": "<p>admin access only.</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "src/api/status/index.js",
-    "groupTitle": "Status"
-  },
-  {
     "type": "delete",
     "url": "/status/:id",
     "title": "Delete status",
     "name": "DeleteStatus",
-    "group": "Status",
+    "group": "Status_Transaksi",
     "permission": [
       {
         "name": "admin",
@@ -212,82 +132,14 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "src/api/status/index.js",
-    "groupTitle": "Status"
-  },
-  {
-    "type": "get",
-    "url": "/status/:id",
-    "title": "Retrieve status",
-    "name": "RetrieveStatus",
-    "group": "Status",
-    "permission": [
-      {
-        "name": "user",
-        "title": "User access only",
-        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
-      }
-    ],
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "access_token",
-            "description": "<p>user access token.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "status",
-            "description": "<p>Status's data.</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "type": "Object",
-            "optional": false,
-            "field": "400",
-            "description": "<p>Some parameters may contain invalid values.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "404",
-            "description": "<p>Status not found.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "401",
-            "description": "<p>user access only.</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "src/api/status/index.js",
-    "groupTitle": "Status"
+    "groupTitle": "Status_Transaksi"
   },
   {
     "type": "get",
     "url": "/status",
-    "title": "Retrieve statuses",
-    "name": "RetrieveStatuses",
-    "group": "Status",
+    "title": "Lihat Semua Status",
+    "name": "LihatSemuaStatusTransaksi",
+    "group": "Status_Transaksi",
     "permission": [
       {
         "name": "admin",
@@ -389,14 +241,82 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "src/api/status/index.js",
-    "groupTitle": "Status"
+    "groupTitle": "Status_Transaksi"
   },
   {
-    "type": "put",
+    "type": "get",
     "url": "/status/:id",
-    "title": "Update status",
-    "name": "UpdateStatus",
-    "group": "Status",
+    "title": "Lihat Status By Id",
+    "name": "LihatStatusById",
+    "group": "Status_Transaksi",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>user access token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Status's data.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Status not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>user access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/status/index.js",
+    "groupTitle": "Status_Transaksi"
+  },
+  {
+    "type": "post",
+    "url": "/status",
+    "title": "Membuat Status",
+    "name": "MembuatStatus",
+    "group": "Status_Transaksi",
     "permission": [
       {
         "name": "admin",
@@ -469,14 +389,14 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "src/api/status/index.js",
-    "groupTitle": "Status"
+    "groupTitle": "Status_Transaksi"
   },
   {
     "type": "put",
-    "url": "/transaksis/:id",
-    "title": "Approve Transaksi",
-    "name": "ApproveTransaksi",
-    "group": "Transaksi",
+    "url": "/status/:id",
+    "title": "Perbarui Status",
+    "name": "PerbaruiStatus",
+    "group": "Status_Transaksi",
     "permission": [
       {
         "name": "admin",
@@ -497,20 +417,14 @@ define({ "api": [
           {
             "group": "Parameter",
             "optional": false,
-            "field": "jenis",
-            "description": "<p>Transaksi's jenis.</p>"
+            "field": "idTransaksi",
+            "description": "<p>Status's idTransaksi.</p>"
           },
           {
             "group": "Parameter",
             "optional": false,
-            "field": "biaya",
-            "description": "<p>Transaksi's biaya.</p>"
-          },
-          {
-            "group": "Parameter",
-            "optional": false,
-            "field": "keterangan",
-            "description": "<p>Transaksi's keterangan.</p>"
+            "field": "status",
+            "description": "<p>Status's status.</p>"
           }
         ]
       }
@@ -522,8 +436,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Object",
             "optional": false,
-            "field": "transaksi",
-            "description": "<p>Transaksi's data.</p>"
+            "field": "status",
+            "description": "<p>Status's data.</p>"
           }
         ]
       }
@@ -542,7 +456,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Transaksi not found.</p>"
+            "description": "<p>Status not found.</p>"
           },
           {
             "group": "Error 4xx",
@@ -554,8 +468,8 @@ define({ "api": [
       }
     },
     "version": "0.0.0",
-    "filename": "src/api/transaksi/index.js",
-    "groupTitle": "Transaksi"
+    "filename": "src/api/status/index.js",
+    "groupTitle": "Status_Transaksi"
   },
   {
     "type": "delete",

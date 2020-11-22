@@ -5,15 +5,14 @@
 - [Auth](#auth)
 	- [Authenticate](#authenticate)
 	
-- [Status](#status)
-	- [Create status](#create-status)
+- [Status_Transaksi](#status_transaksi)
 	- [Delete status](#delete-status)
-	- [Retrieve status](#retrieve-status)
-	- [Retrieve statuses](#retrieve-statuses)
-	- [Update status](#update-status)
+	- [Lihat Semua Status](#lihat-semua-status)
+	- [Lihat Status By Id](#lihat-status-by-id)
+	- [Membuat Status](#membuat-status)
+	- [Perbarui Status](#perbarui-status)
 	
 - [Transaksi](#transaksi)
-	- [Approve Transaksi](#approve-transaksi)
 	- [Delete transaksi](#delete-transaksi)
 	- [Laporkan Transaksi](#laporkan-transaksi)
 	- [Lihat Semua Transaksi](#lihat-semua-transaksi)
@@ -50,22 +49,7 @@
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Master access_token.</p>							|
 
-# Status
-
-## Create status
-
-
-
-	POST /status
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>admin access token.</p>							|
-| idTransaksi			| 			|  <p>Status's idTransaksi.</p>							|
-| status			| 			|  <p>Status's status.</p>							|
+# Status_Transaksi
 
 ## Delete status
 
@@ -80,20 +64,7 @@
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>admin access token.</p>							|
 
-## Retrieve status
-
-
-
-	GET /status/:id
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-
-## Retrieve statuses
+## Lihat Semua Status
 
 
 
@@ -111,7 +82,35 @@
 | sort			| String[]			| **optional** <p>Order of returned items.</p>							|
 | fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
 
-## Update status
+## Lihat Status By Id
+
+
+
+	GET /status/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Membuat Status
+
+
+
+	POST /status
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| idTransaksi			| 			|  <p>Status's idTransaksi.</p>							|
+| status			| 			|  <p>Status's status.</p>							|
+
+## Perbarui Status
 
 
 
@@ -127,22 +126,6 @@
 | status			| 			|  <p>Status's status.</p>							|
 
 # Transaksi
-
-## Approve Transaksi
-
-
-
-	PUT /transaksis/:id
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>admin access token.</p>							|
-| jenis			| 			|  <p>Transaksi's jenis.</p>							|
-| biaya			| 			|  <p>Transaksi's biaya.</p>							|
-| keterangan			| 			|  <p>Transaksi's keterangan.</p>							|
 
 ## Delete transaksi
 

@@ -60,24 +60,6 @@ router.get('/:id',
   token({ required: true }),
   show)
 
-/**
- * @api {put} /transaksis/:id Approve Transaksi
- * @apiName ApproveTransaksi
- * @apiGroup Transaksi
- * @apiPermission admin
- * @apiParam {String} access_token admin access token.
- * @apiParam jenis Transaksi's jenis.
- * @apiParam biaya Transaksi's biaya.
- * @apiParam keterangan Transaksi's keterangan.
- * @apiSuccess {Object} transaksi Transaksi's data.
- * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 404 Transaksi not found.
- * @apiError 401 admin access only.
- */
-router.put('/:id',
-  token({ required: true, roles: ['admin'] }),
-  body({ jenis, biaya, keterangan }),
-  update)
 
 /**
  * @api {delete} /transaksis/:id Delete transaksi

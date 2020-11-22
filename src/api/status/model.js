@@ -33,7 +33,7 @@ statusSchema.methods = {
   }
 }
 
-const model = mongoose.model('Status', statusSchema)
+const model = mongoose.model('Status Transaksi', statusSchema)
 
 export const schema = model.schema
 export default model
