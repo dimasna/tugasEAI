@@ -1,19 +1,23 @@
 import mongoose, { Schema } from 'mongoose'
 
-const transaksiSchema = new Schema({
+const transaksiSchemas = new Schema({
   idDivisi: {
     type: Schema.ObjectId,
     ref: 'User',
     required: true
   },
   jenis: {
-    type: String
+    type: String,
+    enum: ['debit', 'credit'],
+    required: true
   },
   biaya: {
-    type: String
+    type: Number,
+    required: true
   },
   keterangan: {
-    type: String
+    type: String,
+    required: true
   }
 }, {
   timestamps: true,
@@ -23,7 +27,7 @@ const transaksiSchema = new Schema({
   }
 })
 
-transaksiSchema.methods = {
+transaksiSchemas.methods = {
   view (full) {
     const view = {
       // simple view
@@ -43,7 +47,7 @@ transaksiSchema.methods = {
   }
 }
 
-const model = mongoose.model('Transaksi', transaksiSchema)
+const model = mongoose.model('Transaksi', transaksiSchemas)
 
 export const schema = model.schema
 export default model

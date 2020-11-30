@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
 import { token } from '../../services/passport'
-import { create, index, show, update, destroy } from './controller'
+import { create, index, show, update, getLaporan, destroy } from './controller'
 import { schema } from './model'
 export Transaksi, { schema } from './model'
 
@@ -44,6 +44,57 @@ router.get('/',
   token({ required: true, roles: ['admin'] }),
   query(),
   index)
+
+/**
+ * @api {get} /transaksis/type Lihat Transaksi By Type
+ * @apiName LihatTransaksiByType
+ * @apiGroup Transaksi
+ * @apiPermission admin
+ * @apiParam (Authorization) {String} access_token admin access token.
+ * @apiParam {String} name nama jenis transaksi (debit/credit).
+ * @apiSuccess {Number} count Total amount of transaksis.
+ * @apiSuccess {Object[]} rows List of transaksis.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 401 admin access only.
+ */
+router.get('/type',
+  token({ required: true, roles: ['admin'] }),
+  query({
+    name:{
+      type: [String],
+      paths: ['jenis']
+    }
+  }),
+  index)
+
+/**
+ * @api {get} /transaksis/laporan Lihat Laporan Keuangan
+ * @apiName LihatLaporanKeuangan
+ * @apiGroup Transaksi
+ * @apiPermission admin
+ * @apiParam (Authorization) {String} access_token admin access token.
+ * @apiParam {String} from tanggal mulai format 'yyyy-mm-dd'.
+ * @apiParam {String} to tanggal akhir format 'yyyy-mm-dd'.
+ * @apiSuccess {Number} count Total amount of transaksis.
+ * @apiSuccess {Object[]} rows List of transaksis.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 401 admin access only.
+ */
+router.get('/laporan',
+  token({ required: true, roles: ['admin'] }),
+  query({
+    from:{
+      type: Date,
+      paths: ['createdAt'],
+      operator: '$gte'
+    },
+    to:{
+      type: Date,
+      paths: ['createdAt'],
+      operator: '$lte'
+    }
+  }),
+  getLaporan)
 
 /**
  * @api {get} /transaksis/:id Lihat Transaksi By Id

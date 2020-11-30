@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 public
+fe
+frontend
 .tmp
 .idea
 .log

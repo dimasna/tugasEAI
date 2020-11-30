@@ -15,8 +15,10 @@
 - [Transaksi](#transaksi)
 	- [Delete transaksi](#delete-transaksi)
 	- [Laporkan Transaksi](#laporkan-transaksi)
+	- [Lihat Laporan Keuangan](#lihat-laporan-keuangan)
 	- [Lihat Semua Transaksi](#lihat-semua-transaksi)
 	- [Lihat Transaksi By Id](#lihat-transaksi-by-id)
+	- [Lihat Transaksi By Type](#lihat-transaksi-by-type)
 	
 - [User](#user)
 	- [Create user](#create-user)
@@ -156,6 +158,20 @@
 | biaya			| 			|  <p>Transaksi's biaya.</p>							|
 | keterangan			| 			|  <p>Transaksi's keterangan.</p>							|
 
+## Lihat Laporan Keuangan
+
+
+
+	GET /transaksis/laporan
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| from			| String			|  <p>tanggal mulai format 'yyyy-mm-dd'.</p>							|
+| to			| String			|  <p>tanggal akhir format 'yyyy-mm-dd'.</p>							|
+
 ## Lihat Semua Transaksi
 
 
@@ -186,6 +202,19 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
+
+## Lihat Transaksi By Type
+
+
+
+	GET /transaksis/type
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| name			| String			|  <p>nama jenis transaksi (debit/credit).</p>							|
 
 # User
 

@@ -57,6 +57,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.15",
+    "mongoose-int32": "^0.4.1",
     "mongoose-keywords": "^0.4.0",
     "morgan": "^1.9.1",
     "passport": "^0.4.1",
@@ -66,6 +67,7 @@
     "querymen": "^2.1.4",
     "rand-token": "^0.4.0",
     "request": "^2.88.2",
-    "request-promise": "^4.2.5"
+    "request-promise": "^4.2.5",
+    "schm": "^0.4.1"
   }
 }

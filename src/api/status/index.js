@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
-import { token } from '../../services/passport'
+import { token, master } from '../../services/passport'
 import { create, index, show, update, destroy } from './controller'
 import { schema } from './model'
 export Status, { schema } from './model'
@@ -23,7 +23,7 @@ const { idTransaksi, status } = schema.tree
  * @apiError 401 admin access only.
  */
 router.post('/',
-  token({ required: true, roles: ['admin'] }),
+  master(),
   body({ idTransaksi, status }),
   create)
 
