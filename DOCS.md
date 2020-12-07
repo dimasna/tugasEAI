@@ -5,12 +5,20 @@
 - [Auth](#auth)
 	- [Authenticate](#authenticate)
 	
+- [Status_Transaksi](#status_transaksi)
+	- [Delete status](#delete-status)
+	- [Lihat Semua Status](#lihat-semua-status)
+	- [Lihat Status By Id](#lihat-status-by-id)
+	- [Membuat Status](#membuat-status)
+	- [Perbarui Status](#perbarui-status)
+	
 - [Transaksi](#transaksi)
-	- [Approve Transaksi](#approve-transaksi)
 	- [Delete transaksi](#delete-transaksi)
 	- [Laporkan Transaksi](#laporkan-transaksi)
+	- [Lihat Laporan Keuangan](#lihat-laporan-keuangan)
 	- [Lihat Semua Transaksi](#lihat-semua-transaksi)
 	- [Lihat Transaksi By Id](#lihat-transaksi-by-id)
+	- [Lihat Transaksi By Type](#lihat-transaksi-by-type)
 	
 - [User](#user)
 	- [Create user](#create-user)
@@ -43,13 +51,13 @@
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Master access_token.</p>							|
 
-# Transaksi
+# Status_Transaksi
 
-## Approve Transaksi
+## Delete status
 
 
 
-	PUT /transaksis/:id
+	DELETE /status/:id
 
 
 ### Parameters
@@ -57,10 +65,69 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>admin access token.</p>							|
-| jenis			| 			|  <p>Transaksi's jenis.</p>							|
-| biaya			| 			|  <p>Transaksi's biaya.</p>							|
-| status			| 			|  <p>Transaksi's status.</p>							|
-| keterangan			| 			|  <p>Transaksi's keterangan.</p>							|
+
+## Lihat Semua Status
+
+
+
+	GET /status
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Lihat Status By Id
+
+
+
+	GET /status/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Membuat Status
+
+
+
+	POST /status
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| idTransaksi			| 			|  <p>Status's idTransaksi.</p>							|
+| status			| 			|  <p>Status's status.</p>							|
+
+## Perbarui Status
+
+
+
+	PUT /status/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| idTransaksi			| 			|  <p>Status's idTransaksi.</p>							|
+| status			| 			|  <p>Status's status.</p>							|
+
+# Transaksi
 
 ## Delete transaksi
 
@@ -89,8 +156,21 @@
 | access_token			| String			|  <p>user access token.</p>							|
 | jenis			| 			|  <p>Transaksi's jenis.</p>							|
 | biaya			| 			|  <p>Transaksi's biaya.</p>							|
-| status			| 			|  <p>Transaksi's status.</p>							|
 | keterangan			| 			|  <p>Transaksi's keterangan.</p>							|
+
+## Lihat Laporan Keuangan
+
+
+
+	GET /transaksis/laporan
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| from			| String			|  <p>tanggal mulai format 'yyyy-mm-dd'.</p>							|
+| to			| String			|  <p>tanggal akhir format 'yyyy-mm-dd'.</p>							|
 
 ## Lihat Semua Transaksi
 
@@ -122,6 +202,19 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
+
+## Lihat Transaksi By Type
+
+
+
+	GET /transaksis/type
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| name			| String			|  <p>nama jenis transaksi (debit/credit).</p>							|
 
 # User
 

@@ -6,7 +6,7 @@ import { env } from '../../config'
 
 const roles = ['user', 'admin']
 
-const userSchema = new Schema({
+const userSchemas = new Schema({
   email: {
     type: String,
     match: /^\S+@\S+\.\S+$/,
@@ -19,6 +19,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 6
+  },
+  department:{
+    type: String,
+    required: true
   },
   name: {
     type: String,
@@ -38,7 +42,7 @@ const userSchema = new Schema({
   timestamps: true
 })
 
-userSchema.path('email').set(function (email) {
+userSchemas.path('email').set(function (email) {
   if (!this.picture || this.picture.indexOf('https://gravatar.com') === 0) {
     const hash = crypto.createHash('md5').update(email).digest('hex')
     this.picture = `https://gravatar.com/avatar/${hash}?d=identicon`
@@ -51,7 +55,7 @@ userSchema.path('email').set(function (email) {
   return email
 })
 
-userSchema.pre('save', function (next) {
+userSchemas.pre('save', function (next) {
   if (!this.isModified('password')) return next()
 
   /* istanbul ignore next */
@@ -63,7 +67,7 @@ userSchema.pre('save', function (next) {
   }).catch(next)
 })
 
-userSchema.methods = {
+userSchemas.methods = {
   view (full) {
     const view = {}
     let fields = ['id', 'name', 'picture']
@@ -83,13 +87,13 @@ userSchema.methods = {
 
 }
 
-userSchema.statics = {
+userSchemas.statics = {
   roles
 }
 
-userSchema.plugin(mongooseKeywords, { paths: ['email', 'name'] })
+userSchemas.plugin(mongooseKeywords, { paths: ['email', 'name'] })
 
-const model = mongoose.model('User', userSchema)
+const model = mongoose.model('User', userSchemas)
 
 export const schema = model.schema
 export default model
