@@ -18,6 +18,7 @@ export default (apiRoot, routes) => {
     app.use(morgan('dev'))
   }
   app.use('/docs',express.static('docs'));
+
   app.use(express.static('frontend/build'));
   app.get('/docs', function (req, res) {
     res.sendFile('/docs/index.html')
@@ -31,6 +32,7 @@ export default (apiRoot, routes) => {
     //console.log(departments)
     res.json(departments)
   })
+
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
   app.use(apiRoot, routes)

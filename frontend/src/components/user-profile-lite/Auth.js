@@ -7,7 +7,10 @@ import {
   ListGroupItem,
   Form,
   FormInput,
+
   FormSelect,
+
+
   FormGroup
 } from "shards-react";
 
@@ -20,6 +23,7 @@ export default class Auth extends Component {
     super(props)
 
     this.state = {
+
       isLogin: true,
       departments: []
     }
@@ -119,6 +123,7 @@ fetch("/users", requestOptions)
   }
 
 
+
   render() {
     return (
       <Card small className="mb-4 pt-3">
@@ -131,12 +136,15 @@ fetch("/users", requestOptions)
               width="110"
             />
           </div>
+
           <h4 className="mb-0">{this.state.isLogin ? 'Masuk' : 'Daftar'}</h4>
+
           <span className="text-muted d-block mb-2">Finance Manufacture App</span>
 
         </CardHeader>
         <ListGroup flush>
           <ListGroupItem className="px-4">
+
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
                 <label htmlFor="#email">Email</label>
@@ -162,12 +170,15 @@ fetch("/users", requestOptions)
                 : <></>}
               <div style={{ display: 'grid', justifyContent: 'right' }}>
                 <Button type="submit">{this.state.isLogin ? 'Masuk' : 'Daftar'}</Button>
+
               </div>
             </Form>
           </ListGroupItem>
           <ListGroupItem className="p-4" style={{ textAlign: 'center' }}>
+
             <span>{this.state.isLogin ? 'Belum ' : 'Sudah '}punya akun? <strong className="text-muted mb-2">
               <a href="#" onClick={() => this.changeMode(!this.state.isLogin)}>{this.state.isLogin ? 'Daftar' : 'Masuk'}</a>
+
             </strong></span>
 
 
